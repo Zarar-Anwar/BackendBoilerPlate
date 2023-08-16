@@ -1,10 +1,11 @@
 const express=require('express')
-const updatepassword = require('../middleware/updatepassword')
 const AdminControllers = require('../controllers/adminController')
+const adminPermission = require('../middleware/adminPermission')
 const adminRouter=express.Router()
 
-adminRouter.post('/user/login',AdminControllers.Login)
+adminRouter.post('/admin/login',AdminControllers.adminLogin)
 
+adminRouter.get('/create/admin',adminPermission,AdminControllers.adminLogin)
 
 
 module.exports=adminRouter

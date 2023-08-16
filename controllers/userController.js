@@ -1,4 +1,11 @@
+const db = require("../model/connection/connection");
+const bcrypt=require('bcrypt')
+const User=db.user
+const commonPasswords=['123456','abcdef','password','passwords']
+const jwt=require('jsonwebtoken')
 
+
+// Users Logics
 
 class userController {
 
@@ -110,7 +117,7 @@ static resetpasswordemail=async(req,res)=>{
   }
   }
 
-  // Updateing User Password 
+  // Updating User Password 
   
   static passwordReset = async (req, res) => {
     const { password, password_confirmation } = req.body;

@@ -1,6 +1,6 @@
 const express=require('express')
 const userController=require('../controllers/userController')
-const updatepassword = require('../middleware/updatepassword')
+const userPermission = require('../middleware/userPermission')
 const userRouter=express.Router()
 
 userRouter.post('/user/registration',userController.Registration)
