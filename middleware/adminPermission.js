@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
-const db = require("../model/connection");
+const db = require("../models");
 const User = db.user;
-
 //Admin Checking Permission Middle Ware
 
 const adminPermission = async (req, res, next) => {

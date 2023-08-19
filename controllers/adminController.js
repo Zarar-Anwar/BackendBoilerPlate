@@ -1,6 +1,6 @@
-const db = require("../model/connection/connection");
 const Admin=db.admin
 const bcrypt=require('bcrypt')
+const db = require('../models')
 
 
 //ADMIN LOGICS
