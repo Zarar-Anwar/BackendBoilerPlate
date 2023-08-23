@@ -1,5 +1,5 @@
-const router1=require("./adminRoutes")
-const router2=require("./userRoutes")
+const router1=require("./userRoutes")
+const router2=require("./adminRoutes")
 
 const routes=(app)=>{
 

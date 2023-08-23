@@ -1,5 +1,6 @@
 const bcrypt=require('bcrypt')
 const db = require('../models')
+const { genToken } = require('../config/validators')
 const Admin=db.admin
 
 
@@ -28,14 +29,13 @@ class AdminControllers{
         const { email, password } = req.body;
         
         if (email && password) {
-          try {
             const user = await Admin.findOne({ where: { email: email } });
             
             if (user) {
               const isMatch = await bcrypt.compare(password, user.password);
       
               if (isMatch) {
-                const token = jwt.sign({ userId: user.dataValues.id }, process.env.JwtKey, { expiresIn: "5d" });
+                const token = genToken(user.dataValues)
                 res.send({ user: user.dataValues, token: token });
               } else {
                 res.status(401).send({ message: "Invalid email or password" });
@@ -43,9 +43,6 @@ class AdminControllers{
             } else {
               res.status(404).send({ message: "User not found" });
             }
-          } catch (error) {
-            res.status(500).send({ message: "Internal server error" });
-          }
         } else {
           res.status(400).send({ message: "All fields are required" });
         }
