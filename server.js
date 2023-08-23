@@ -11,8 +11,7 @@ const bodyParser = require('body-parser');
 
 // Connection file of Database
 
-const connection = require ("./model/connection/connection")
-
+require('./models/index')
 
 
 const app=express()

@@ -1,6 +1,6 @@
-const Admin=db.admin
 const bcrypt=require('bcrypt')
 const db = require('../models')
+const Admin=db.admin
 
 
 //ADMIN LOGICS
